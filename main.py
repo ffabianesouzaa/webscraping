@@ -12,15 +12,15 @@ import functions
 start_time = time()
 requests = 0
 
-# For every page in the interval 1-443
-pages = [str(i) for i in range(1,3)]
+# For every page
+pages = [str(i) for i in range(78,6683)]
 for page in pages:
 
     # Make a get request
-    response = get('https://www.trabalhabrasil.com.br/vagas-empregos-em-sete-lagoas-mg?pagina=' + page)
+    response = get('https://www.trabalhabrasil.com.br/vagas-empregos-em-sao-paulo-sp?pagina=' + page)
 
     # Pause the loop
-    sleep(randint(15, 30))
+    sleep(randint(8, 15))
 
     # Monitor the requests
     requests += 1
@@ -33,7 +33,7 @@ for page in pages:
         warn('Request: {}; Status code: {}'.format(requests, response.status_code))
 
     # Break the loop if the number of requests is greater than expected
-    if requests > 2:
+    if requests > 6604:
         warn('Number of requests was greater than expected.')
         break
 
