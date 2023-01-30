@@ -1,5 +1,6 @@
 import re
 
+
 # Removing numbers of the title
 def title(titles):
     jobTitle = []
@@ -9,6 +10,7 @@ def title(titles):
         jobTitle.append(newTitle)
 
     return jobTitle
+
 
 # Removing letters of the title
 def quantity(quantities):
@@ -22,12 +24,13 @@ def quantity(quantities):
     jobQuantityAll = []
     for quantity in jobQuantity:
         if quantity == '':
-           quantity = '1'
-           jobQuantityAll.append(quantity)
+            quantity = '1'
+            jobQuantityAll.append(quantity)
         else:
             jobQuantityAll.append(quantity)
 
     return jobQuantityAll
+
 
 # Removing '()' from name companies
 def company(companies):
@@ -38,6 +41,7 @@ def company(companies):
         jobCompany.append(newCompany)
 
     return jobCompany
+
 
 # Removing salary informations
 def city(cities):
@@ -55,6 +59,7 @@ def city(cities):
 
     # Unpacking list
     output = []
+
     def unpackList(l):
         for item in l:
             if type(item) == list:
@@ -68,6 +73,7 @@ def city(cities):
     jobCityAll = (output[::2])
 
     return jobCityAll
+
 
 # Removing salary informations
 def state(states):
@@ -85,6 +91,7 @@ def state(states):
 
     # Unpacking list
     output = []
+
     def unpackList(l):
         for item in l:
             if type(item) == list:

@@ -1,3 +1,4 @@
+import urllib.request
 from time import sleep, time
 from random import randint
 from warnings import warn
@@ -13,8 +14,21 @@ start_time = time()
 requests = 0
 
 # For every page
-pages = [str(i) for i in range(78,6683)]
+pages = [str(i) for i in range(1, 7)]
 for page in pages:
+
+    # Connection verification
+    connected = False
+    while connected is not True:
+        try:
+            connection = urllib.request.urlopen("https://www.google.com.br/").getcode()
+            if connection == 200:
+                connected = True
+            else:
+                connected = False
+                raise Exception('no connection')
+        except (Exception,):
+            sleep(20)
 
     # Make a get request
     response = get('https://www.trabalhabrasil.com.br/vagas-empregos-em-sao-paulo-sp?pagina=' + page)
@@ -33,7 +47,7 @@ for page in pages:
         warn('Request: {}; Status code: {}'.format(requests, response.status_code))
 
     # Break the loop if the number of requests is greater than expected
-    if requests > 6604:
+    if requests > 6:
         warn('Number of requests was greater than expected.')
         break
 
@@ -78,4 +92,6 @@ for page in pages:
             for state in states:
                 listState.append(state.get_text(strip=True))
 
-        database.savedb(functions.quantity(listQuantity), functions.title(listTitle), functions.company(listCompany), functions.city(listCity), functions.state(listState))
+        database.savedb(functions.quantity(listQuantity), functions.title(listTitle),
+                        functions.company(listCompany), functions.city(listCity),
+                        functions.state(listState))

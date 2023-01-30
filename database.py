@@ -1,6 +1,7 @@
 import sqlite3
 import pandas as pd
 
+
 # Function to create a database and save data
 def savedb(list1, list2, list3, list4, list5):
     # Creating a dataframe
@@ -16,8 +17,9 @@ def savedb(list1, list2, list3, list4, list5):
 
     # Create a table if not exist
     def create_table():
-        connection.execute('CREATE TABLE IF NOT EXISTS jobs (id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, Quantity INT, ' \
-                        'Title TEXT,  Company TEXT, City TEXT, State TEXT)')
+        connection.execute(
+            'CREATE TABLE IF NOT EXISTS jobs (id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, Quantity INT, ' \
+            'Title TEXT,  Company TEXT, City TEXT, State TEXT)')
 
     create_table()
 
